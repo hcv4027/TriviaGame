@@ -1,0 +1,42 @@
+User
+=====================
+1. Click on Start button
+2. Answer questions within timeframe sowing at the top of  the screen (Coutndown)
+3. When time runs out, user will be shown wins/loss/unanswered
+4. Play again (Yes) - Go back to step 2
+5. Play again (No) - Game Over
+
+
+
+======================
+Developer
+======================
+1. Create start button
+
+2. When button is clicked 
+   2.1 Create trivia game timer
+       2.1.1 start timer after creation with configured time in a function
+             (See #4) check that when time is over that the user has won, lost or did not answer a question (Function)
+   2.2 Create questions in array of arrays (question array at [0], answer array....correct at index [1], choices [2]) SEE EXAMPLE CODE BELOW
+       2.2.1 display questions, answsers
+       2.2.2 Create click function for receiving answers, increment right, wrong answers
+       2.2.3 Unanswered questions will calculate when the timer runs out
+   2.3 Use radio buttons, a links, etc...
+
+
+3. When time runs out, calculate right, wrong and unanswered questions
+
+4. Allow user to play again.
+   4.1 if user chooses to play again reset timer and all variables, except wins and losses.
+   4.2 If user decides not to play again, shw Game Over screen
+
+*************************************************************************
+EXAMPLE CODE EXAMPLE CODE EXAMPLE CODE EXAMPLE CODE EXAMPLE CODE
+*************************************************************************
+var question[] = [ "What time is it?, "9:28 am",[ 10 am, 11 am, 12 pm]],
+                 [ "What date is today?, "10/28/2018",[ 10/31/18, 11/01/2018, 12/25/2018]],.....
+
+for (var i = 0; i< question.length; i++){
+ console.log ("Question 2: " + question[1][1]);
+
+}

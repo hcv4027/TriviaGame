@@ -1,0 +1,60 @@
+body{
+	background: url('../images/cornback.jpg');
+	font-family: 'Raleway', sans-serif;
+	font-size: 25px;
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+	height: 800px; /* You must set a specified height */
+	background-color: black;
+}
+
+header{
+	margin-bottom: 20px;
+}
+
+.btn-primary,.reset{
+	background-color: black;
+	color: white;
+	font-family: Neuropol, sans-serif;
+	font-size: 30px;
+	padding: 20px;
+	margin-top: 100px;
+}
+.btn-primary:hover, .reset:hover{
+	background-color: red;
+}
+
+.container{
+	margin-top: 50px;
+	text-align: center;
+	height: 100%;
+	width: 700px;
+}
+
+h2, #message, #finalMessage{
+	font-family: Sigmar One;
+}
+
+.thisChoice:hover{
+	background-color: blue;
+	color: white;
+	padding: 10px;
+}
+
+#gif{
+	margin: 30px;
+	
+}
+
+#questiontext{
+	font-weight: bold;
+}
+
+@media screen and (max-width:640px){
+	.container{
+		width: 500px;
+		margin-top: 200px;
+		size: 200%;
+	}	
+}
