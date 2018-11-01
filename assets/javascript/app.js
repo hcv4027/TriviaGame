@@ -10,63 +10,63 @@ var userSelect; //The player's answer choice selected during n game pl
 /* The following is an array of trivia question objects, which consist of the question being asked, an array of possible answers, and the index of the corret answer from the array of answers. */
 var triviaQuestions = [{
 	question: "What is Peter Parker's alter ego?",
-	answerList: ["Pied Piper", "The Amazing Spider-Man", "Peter Pumpkineater", "The Terminator"],
+	answerList: ["A) Pied Piper", "B) The Amazing Spider-Man", "C) Peter Pumpkineater", "D) The Terminator"],
 	answer: 1
 },{
 	question: "What does Superman's chest emblem stand for?",
-	answerList: ["Justice", "Stupendous", "Superman", "Hope (In Kryptonese)"],
+	answerList: ["A) Justice", "B) Stupendous", "C) Superman", "D) Hope (In Kryptonese)"],
 	answer: 3
 },{
 	question: "The Fantastic Four work out of what building in New York?",
-	answerList: ["Trump Tower", "Madison Square Gardens", "Baxter Building", "Empire State Building"],
+	answerList: ["A) Trump Tower", "B) Madison Square Gardens", "C) Baxter Building", "D) Empire State Building"],
 	answer: 2
 },{
 	question: "What is the name of the rope that Wonder Woman carries?",
-	answerList: ["Lasso of Truth", "Rope of Hope", "Strength Lasso", "Capture Rope"],
+	answerList: ["A) Lasso of Truth", "B) Rope of Hope", "C) Strength Lasso", "D)Capture Rope"],
 	answer: 0
 },{
 	question: "In his first transformation, the Incredible Hulk was what color?",
-	answerList: ["Green", "White", "Gray", "Blue"],
+	answerList: ["A) Green", "B) White", "C) Gray", "D) Blue"],
 	answer: 2
 },{
 	question: "What is the name of the force that grants the Flash his speed?",
-	answerList: ["Edge", "Speed Force", "Gravity", "Centrifugal Force"],
+	answerList: ["A) Edge", "B) Speed Force", "C) Gravity", "D) Centrifugal Force"],
 	answer: 1
 },{
 	question: "What is the name of the country that the Black Panther is king of?",
-	answerList: ["T'challaLand", "Pantherville", "Wakanda", "South Africa"],
+	answerList: ["A) T'challaLand", "B) Pantherville", "C) Wakanda", "D) South Africa"],
 	answer: 2
 },{
 	question: "What is the name of the Bruce Wayne's company?",
-	answerList: ["Batman, Inc.", "Bruce Industries", "Wayne Entertprises", "Cave Foundation"],
+	answerList: ["A) Batman, Inc.", "B) Bruce Industries", "C) Wayne Entertprises", "D) Cave Foundation"],
 	answer: 2
 },{
 	question: "Iron Man originally created his armor to...?",
-	answerList: ["Heal his heart", "Get rid of a cold", "Increase his strength", "To fly"],
+	answerList: ["A) Heal his heart", "B) Get rid of a cold", "C) Increase his strength", "D) To fly"],
 	answer: 0
 },{
 	question: "What is the name of the planet where Green Lantern's ring comes from?",
-	answerList: ["Mars", "Jupiter", "Andromeda", "Oa"],
+	answerList: ["A) Mars", "B) Jupiter", "C) Andromeda", "D) Oa"],
 	answer: 3
 },{
 	question: "What is ther name of Thor's hammer?",
-	answerList: ["MC Hammer", "Ajax", "Mjolnir", "Black & Decker"],
+	answerList: ["A) MC Hammer", "B) Ajax", "C) Mjolnir", "D) Black & Decker"],
 	answer: 2
 },{
 	question: "Aquaman is the ruler of what underwater kingdom?",
-	answerList: ["Bohemia", "Atlantis", "Marianis Trench", "Pacific Ocean"],
+	answerList: ["A) Bohemia", "B) Atlantis", "C) Marianis Trench", "D) Pacific Ocean"],
 	answer: 1
 },{
 	question: "Deadpool's primary power is....?",
-	answerList: ["Marksmanship", "Insensitivity", "Healing Factor", "Throwing his voice"],
-	answer: 3
+	answerList: ["A) Marksmanship", "B) Insensitivity", "C) Healing Factor", "D) Throwing his voice"],
+	answer: 2
 },{
 	question: "What is the word Billy Batson uses to transform into a superhero?",
-	answerList: ["Shazam!", "Elementary!", "Yessir!", "Caw"],
+	answerList: ["A) Shazam!", "B) Elementary!", "C) Yessir!", "D) Caw"],
 	answer: 0
 },{
 	question: "What are Wolverine's claws made of?",
-	answerList: ["Steel", "Adamantium", "Vibranium", "Corrugated Paper"],
+	answerList: ["A) Steel", "B) Adamantium", "C) Vibranium", "D) Titanium"],
 	answer: 1
 }];
 
@@ -180,7 +180,7 @@ function answerPage()
 
 	var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
 	var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
-	$('#gif').html('<img src = "assets/images/'+ gifArray[currentQuestion] +'.gif" width = "400px">');
+	$('#gif').html('<img src = "assets/images/'+ gifArray[currentQuestion] +'.gif" width = "300px">');
 	
 	if((userSelect == rightAnswerIndex) && (answered == true)){
 		correctAnswer++;
@@ -188,7 +188,7 @@ function answerPage()
 	} else if((userSelect != rightAnswerIndex) && (answered == true)){
 		incorrectAnswer++;
 		$('#message').html(messages.incorrect);
-		$('#correctedAnswer').html('The correct answer was: ' + rightAnswerText);
+		$('#correctedAnswer').html('The correct answer was: <br/><strong>' + rightAnswerText+"</strong>");
 	} else{
 		unanswered++;
 		$('#message').html(messages.endTime);
