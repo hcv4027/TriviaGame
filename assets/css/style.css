@@ -1,7 +1,7 @@
 body{
 	background: url('../images/cornback.jpg');
 	font-family: 'Raleway', sans-serif;
-	font-size: 25px;
+	font-size: 45px;
 	background-position: center; /* Center the image */
 	background-repeat: no-repeat; /* Do not repeat the image */
 	background-size: cover; /* Resize the background image to cover the entire container */
@@ -11,6 +11,10 @@ body{
 
 header{
 	margin-bottom: 20px;
+}
+
+.answerList{
+	font-size: 25px;
 }
 
 .btn-primary,.reset{
@@ -49,7 +53,11 @@ h2, #message, #finalMessage{
 
 #questiontext{
 	font-weight: bold;
+	font-size: 40px;
+	color: red;
+	background-color: black;
 }
+
 
 @media screen and (max-width:640px){
 	.container{

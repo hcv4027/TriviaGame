@@ -1,3 +1,13 @@
+var currentQuestion; //Question that is occupying the screen when game starts
+var correctAnswer; //The right answer counter
+var incorrectAnswer;//The wrong answer counter
+var unanswered;//The unanswered  question counter
+var seconds; //The unit of time to measure each question
+var time; //The amount of time alloted to answer each question
+var answered; //Counter that tracks how many questions have been answered so far
+var userSelect; //The player's answer choice selected during n game pl
+
+/* The following is an array of trivia question objects, which consist of the question being asked, an array of possible answers, and the index of the corret answer from the array of answers. */
 var triviaQuestions = [{
 	question: "What is Peter Parker's alter ego?",
 	answerList: ["Pied Piper", "The Amazing Spider-Man", "Peter Pumpkineater", "The Terminator"],
@@ -60,7 +70,8 @@ var triviaQuestions = [{
 	answer: 1
 }];
 
-var gifArray = ['question001', //Spider-Man question
+//The following array is used to display animated gifs of the screen for the subject of each question.
+var gifArray = ['question001', //Spider-Man
 				'question002', //Superman
 				'question003', //Fantastic Four
 				'question004', //Wonder Woman
@@ -75,24 +86,30 @@ var gifArray = ['question001', //Spider-Man question
 				'question013', //Deadpool
 				'question014', //Shazam
 				'question015']; //Wolverine
-var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
+
+				
+//The message object sends a visible nessage to the player after they answer a question.
 var messages = {
-	correct: "YOU GOT RIGHT!",
-	incorrect: "Awww, you were so close!",
-	endTime: "Time ran out!",
-	finished: "Game Completed. Here is your score:"
+	correct: "YOU GOT IT RIGHT!",
+	incorrect: "Awww, you missed this one. Try the next question!",
+	endTime: "Oops!  Time ran out!",
+	finished: "Game Completed! Here is your score:"
 }
 
+//This function hides the Game Start button after it has been clicked.
 $('#startBtn').on('click', function(){
 	$(this).hide();
 	newGame();
 });
 
+//This function allows the player to play the game again
 $('#startOverBtn').on('click', function(){
 	$(this).hide();
 	newGame();
 });
 
+//This function resets all variable values, and empties the text from the divs onscreen when the player chooses
+// to play the trivia ame again.
 function newGame(){
 	$('#finalMessage').empty();
 	$('#correctAnswers').empty();
@@ -105,14 +122,16 @@ function newGame(){
 	newQuestion();
 }
 
-function newQuestion(){
+//This function resets the screen for each new question.
+function newQuestion()
+{
 	$('#message').empty();
 	$('#correctedAnswer').empty();
 	$('#gif').empty();
 	answered = true;
 	
-	//sets up new questions & answerList
-	$('#currentQuestion').html('Question #'+(currentQuestion+1)+'/'+triviaQuestions.length);
+	//Sets up each new question and the question's associated list of answers.
+	$('#currentQuestion').html('Question # '+(currentQuestion+1)+' of '+triviaQuestions.length);
 	$('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
 	for(var i = 0; i < 4; i++){
 		var choices = $('<div>');
@@ -122,7 +141,8 @@ function newQuestion(){
 		$('.answerList').append(choices);
 	}
 	countdown();
-	//clicking an answer will pause the time and setup answerPage
+
+	//When the player chooses an answer the time will pause and setup the answerDisplay
 	$('.thisChoice').on('click',function(){
 		userSelect = $(this).data('index');
 		clearInterval(time);
@@ -130,14 +150,16 @@ function newQuestion(){
 	});
 }
 
+//This function performs the countdown on each question
 function countdown(){
-	seconds = 15;
+	seconds = 20;
 	$('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
 	answered = true;
-	//sets timer to go down
+	//Ticks the timer down by the second
 	time = setInterval(showCountdown, 1000);
 }
 
+//This function displays the time as it counts down, second-by-second
 function showCountdown(){
 	seconds--;
 	$('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
@@ -148,15 +170,18 @@ function showCountdown(){
 	}
 }
 
-function answerPage(){
+//This function clears the question from the display, checks answers for correctness and adjusts the values of the
+//results of the answers.
+function answerPage()
+{
 	$('#currentQuestion').empty();
-	$('.thisChoice').empty(); //Clears question page
+	$('.thisChoice').empty(); 
 	$('.question').empty();
 
 	var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
 	var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
 	$('#gif').html('<img src = "assets/images/'+ gifArray[currentQuestion] +'.gif" width = "400px">');
-	//checks to see correct, incorrect, or unanswered
+	
 	if((userSelect == rightAnswerIndex) && (answered == true)){
 		correctAnswer++;
 		$('#message').html(messages.correct);
@@ -179,7 +204,9 @@ function answerPage(){
 	}	
 }
 
-function scoreboard(){
+//This function clears the screen of all previous text and displays the final score of this game pklay session.
+function scoreboard()
+{
 	$('#timeLeft').empty();
 	$('#message').empty();
 	$('#correctedAnswer').empty();
@@ -192,4 +219,4 @@ function scoreboard(){
 	$('#startOverBtn').addClass('reset');
 	$('#startOverBtn').show();
 	$('#startOverBtn').html('Start Over?');
-}
+};
